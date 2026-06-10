@@ -262,7 +262,9 @@ body { font-family: 'Outfit', 'Noto Sans SC', sans-serif; background: var(--crea
 .cust-hint.err { color: #d04444; }
 .copy-btn { width: 100%; background: var(--green-primary); color: white; border: none; border-radius: 12px; padding: 13px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; margin-bottom: 8px; transition: all 0.2s; }
 .copy-btn:hover { background: var(--green-mid); }
-.whatsapp-btn { width: 100%; background: #25d366; color: white; border: none; border-radius: 12px; padding: 13px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; margin-bottom: 8px; transition: all 0.2s; }
+.whatsapp-btn { width: 100%; background: #25d366; color: white; border: none; border-radius: 12px; padding: 12px 13px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; margin-bottom: 8px; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-align: center; text-decoration: none; line-height: 1.3; }
+.whatsapp-btn .wa-line1 { font-size: 14px; }
+.whatsapp-btn .wa-line2 { font-size: 16px; letter-spacing: 0.5px; }
 .close-export-btn { width: 100%; background: transparent; color: var(--text-light); border: 1.5px solid #ddd; border-radius: 10px; padding: 10px; font-size: 13px; cursor: pointer; font-family: inherit; }
 
 /* TOAST */
@@ -430,8 +432,8 @@ body { font-family: 'Outfit', 'Noto Sans SC', sans-serif; background: var(--crea
       </div>
       <div class="cust-field">
         <label><span class="zh-text">手机号码</span><span class="en-text" style="display:none">Mobile number</span></label>
-        <input id="cust-phone" type="tel" inputmode="tel" autocomplete="tel" oninput="rebuildOrderText()"
-          placeholder="012-345 6789">
+        <input id="cust-phone" type="tel" inputmode="tel" autocomplete="tel" oninput="rebuildOrderText()" onblur="formatPhoneField()"
+          placeholder="">
         <div class="cust-hint" id="phone-hint"></div>
       </div>
       <button type="button" id="reset-cust-btn" onclick="resetCustomer()" style="display:none;background:transparent;border:none;color:var(--text-light);font-size:11px;text-decoration:underline;cursor:pointer;font-family:inherit;align-self:flex-start;padding:2px 0">
@@ -444,7 +446,7 @@ body { font-family: 'Outfit', 'Noto Sans SC', sans-serif; background: var(--crea
       <span class="zh-text">📋 复制到剪贴板</span>
       <span class="en-text" style="display:none">📋 Copy to Clipboard</span>
     </button>
-    <a id="wa-send-btn" class="whatsapp-btn" href="https://wa.me/60108633931" onclick="onWaClick()" target="_blank" rel="noopener" style="display:block;text-align:center;text-decoration:none">💬 WhatsApp 绿陇马来西亚总代理: 010-863 3931</a>
+    <a id="wa-send-btn" class="whatsapp-btn" href="https://wa.me/60108633931" onclick="onWaClick()" target="_blank" rel="noopener"><span class="wa-line1">💬 WhatsApp 绿陇马来西亚总代理</span><span class="wa-line2">010-863 3931</span></a>
     <button class="close-export-btn" onclick="closeExport()">
       <span class="zh-text">关闭</span>
       <span class="en-text" style="display:none">Close</span>
@@ -1309,13 +1311,26 @@ function normalizeMyMobile(raw) {
   return { wa, display, valid: true };
 }
 
+// When the user leaves the phone field, rewrite a valid number into the
+// standard Malaysian local format (e.g. 019-382 4740) for a clean display.
+function formatPhoneField() {
+  const phoneEl = document.getElementById('cust-phone');
+  if (!phoneEl) return;
+  const norm = normalizeMyMobile(phoneEl.value.trim());
+  if (norm.valid) {
+    phoneEl.value = norm.display;
+    saveCustomer(document.getElementById('cust-name') ? document.getElementById('cust-name').value.trim() : '', norm.display);
+    rebuildOrderText();
+  }
+}
+
 function rebuildOrderText() {
   const items = Object.entries(cart).filter(([,v]) => v > 0);
   const now = new Date();
   const dateStr = now.getFullYear() + '-' +
     String(now.getMonth()+1).padStart(2,'0') +
     String(now.getDate()).padStart(2,'0');
-  let text = dateStr + ' LV LONG 绿陇 订购单\n\n';
+  let text = dateStr + (lang==='zh' ? ' LV LONG 绿陇 订购单\n\n' : ' LV LONG 绿陇 Order Form\n\n');
 
   const nameEl = document.getElementById('cust-name');
   const phoneEl = document.getElementById('cust-phone');
@@ -1328,15 +1343,14 @@ function rebuildOrderText() {
   saveCustomer(name, phoneRaw);
   updateResetVisibility();
 
-  // Inline phone validation feedback
+  // Inline phone validation feedback (no "Read as" line; we reformat the field itself on blur)
   if (phoneEl && hint) {
     if (!phoneRaw) {
       phoneEl.classList.remove('invalid');
       hint.textContent = ''; hint.classList.remove('err');
     } else if (norm.valid) {
       phoneEl.classList.remove('invalid');
-      hint.textContent = (lang==='zh'?'已识别: ':'Read as: ') + norm.display;
-      hint.classList.remove('err');
+      hint.textContent = ''; hint.classList.remove('err');
     } else {
       phoneEl.classList.add('invalid');
       hint.textContent = lang==='zh'?'请输入有效的马来西亚手机号':'Enter a valid Malaysian mobile number';
@@ -1363,7 +1377,9 @@ function rebuildOrderText() {
   if (waBtn) {
     const phone = '60108633931';
     waBtn.href = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(text);
-    waBtn.textContent = lang === 'zh' ? '💬 WhatsApp 绿陇马来西亚总代理: 010-863 3931' : '💬 WhatsApp Lv Long Sdn Bhd: 010-863 3931';
+    waBtn.innerHTML = lang === 'zh'
+      ? '<span class="wa-line1">💬 WhatsApp 绿陇马来西亚总代理</span><span class="wa-line2">010-863 3931</span>'
+      : '<span class="wa-line1">💬 WhatsApp Lv Long Sdn Bhd</span><span class="wa-line2">010-863 3931</span>';
   }
 }
 
