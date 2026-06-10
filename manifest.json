@@ -1,0 +1,17 @@
+{
+  "name": "LV Long 绿陇 · Product Guide",
+  "short_name": "绿陇产品",
+  "description": "LV Long Sdn Bhd durian agro-input product guide & order pad",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#faf8f2",
+  "theme_color": "#1a4d2e",
+  "lang": "zh",
+  "icons": [
+    { "src": "./icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
