@@ -114,10 +114,7 @@ body { font-family: 'Outfit', 'Noto Sans SC', sans-serif; background: var(--crea
 .card-body { display: flex; flex-direction: column; gap: 6px; }
 .tagline { font-size: 14px; color: var(--text-mid); line-height: 1.4; padding-left: 8px; }
 .card-footer { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
-.size-tag { font-size: 10px; font-weight: 700; color: var(--green-deep); background: var(--green-tint); padding: 2px 7px; border-radius: 6px; }
-.add-btn { background: var(--green-primary); color: white; border: none; border-radius: 8px; padding: 5px 10px; font-size: 11px; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: inherit; display: flex; align-items: center; gap: 4px; }
-.add-btn:hover { background: var(--green-mid); transform: scale(1.05); }
-.added-badge { background: var(--green-tint); color: var(--green-primary); border-radius: 8px; padding: 5px 10px; font-size: 10px; font-weight: 700; }
+.size-tag { font-size: 10px; font-weight: 700; color: var(--green-deep); background: var(--green-tint); padding: 2px 7px; border-radius: 6px; }.added-badge { background: var(--green-tint); color: var(--green-primary); border-radius: 8px; padding: 5px 10px; font-size: 10px; font-weight: 700; }
 
 /* MODAL */
 
@@ -198,21 +195,7 @@ body { font-family: 'Outfit', 'Noto Sans SC', sans-serif; background: var(--crea
 .calc-input:focus { border-color: var(--green-primary); }
 .calc-badge-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
 .calc-badge { background: white; border: 1.5px solid var(--green-pale); border-radius: 8px; padding: 5px 10px; font-size: 12px; font-weight: 600; color: var(--green-deep); cursor: pointer; transition: all 0.15s; white-space: nowrap; user-select: none; }
-.calc-badge.active { background: var(--green-primary); color: white; border-color: var(--green-primary); }
-.calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
-.calc-field { display: flex; flex-direction: column; }
-.calc-field-full { margin-bottom: 12px; }
-.calc-unit-row { display: flex; gap: 6px; margin-bottom: 12px; }
-.calc-unit-btn { flex: 1; padding: 7px; border-radius: 8px; border: 1.5px solid var(--green-pale); background: white; font-size: 13px; font-weight: 600; color: var(--text-mid); cursor: pointer; font-family: inherit; transition: all 0.15s; }
-.calc-unit-btn.active { background: var(--green-primary); color: white; border-color: var(--green-primary); }
-.calc-result { background: white; border-radius: 8px; padding: 12px 14px; border: 1.5px solid var(--green-pale); }
-.calc-result-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px solid var(--green-tint); }
-.calc-result-row:last-child { border-bottom: none; }
-.calc-result-label { font-size: 13px; color: var(--text-mid); }
-.calc-result-value { font-size: 14px; font-weight: 700; color: var(--green-deep); }
-.calc-result-highlight { font-size: 16px; font-weight: 800; color: var(--green-primary); }
-.calc-note { font-size: 11px; color: var(--text-light); margin-top: 8px; line-height: 1.5; font-style: italic; }
-
+.calc-badge.active { background: var(--green-primary); color: white; border-color: var(--green-primary); }.calc-field-full { margin-bottom: 12px; }
 /* MODAL ORDER BAR */
 .modal-scroll { flex: 1; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--green-pale) transparent; }
 .modal-scroll::-webkit-scrollbar { width: 4px; }
@@ -258,9 +241,7 @@ body { font-family: 'Outfit', 'Noto Sans SC', sans-serif; background: var(--crea
 .cart-qty-btn { width: 26px; height: 26px; border: 1.5px solid var(--green-pale); background: white; border-radius: 6px; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--green-primary); font-weight: 700; transition: all 0.15s; }
 .cart-qty-btn:hover { background: var(--green-tint); }
 .cart-qty-num { font-size: 14px; font-weight: 700; min-width: 22px; text-align: center; }
-.cart-footer { padding: 16px 20px; border-top: 1px solid #eee; background: white; flex-shrink: 0; }
-.cart-summary { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-.cart-items-count { font-size: 14px; color: var(--text-mid); }
+.cart-footer { padding: 16px 20px; border-top: 1px solid #eee; background: white; flex-shrink: 0; }.cart-items-count { font-size: 14px; color: var(--text-mid); }
 .cart-items-count strong { color: var(--green-deep); }
 .export-btn { width: 100%; background: linear-gradient(135deg, var(--green-primary), var(--green-mid)); color: white; border: none; border-radius: 14px; padding: 15px; font-size: 16px; font-weight: 800; cursor: pointer; font-family: inherit; transition: all 0.2s; margin-bottom: 8px; touch-action: manipulation; }
 .export-btn *, .copy-btn *, .whatsapp-btn *, .close-export-btn * { pointer-events: none; }
@@ -300,8 +281,6 @@ body { font-family: 'Outfit', 'Noto Sans SC', sans-serif; background: var(--crea
 .history-item { margin-bottom: 4px; }
 .history-date { font-size: 11px; font-weight: 700; color: var(--green-primary); margin-bottom: 6px; }
 .history-text { font-size: 12px; font-family: 'Courier New', monospace; background: var(--green-tint); border-radius: 8px; padding: 10px; white-space: pre-wrap; word-break: break-word; color: var(--text-dark); border: 1.5px solid var(--green-pale); margin-bottom: 8px; }
-.history-copy-btn { width: 100%; background: var(--green-primary); color: white; border: none; border-radius: 8px; padding: 8px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; }
-
 </style>
 
   <link rel="icon" type="image/png" href="./favicon.png">
@@ -725,7 +704,6 @@ function openModal(id) {
 
   const packLabel = lang === 'zh' ? currentProduct.pack_zh : currentProduct.pack_en;
   const typeLabel = lang === 'zh' ? '类型' : 'Type';
-  const volLabel = lang === 'zh' ? '净重/净容量' : 'Net Wt/Vol';
   const weightLabel = lang === 'zh' ? '净重/净量' : 'Net Wt.';
   const sizeDisplay = currentProduct.vol
     ? currentProduct.size + ' / ' + currentProduct.vol
@@ -907,7 +885,6 @@ function openModal(id) {
   if (modalEl) modalEl.scrollTop = 0;
 }
 
-function closeModal(e) { if (e.target === document.getElementById('modal-overlay')) closeModalBtn(); }
 function closeModalBtn() { document.getElementById('modal-overlay').classList.remove('open'); document.body.style.overflow = ''; }
 function changeQty(delta) {
   if (!currentProduct) return;
@@ -989,32 +966,6 @@ function addToOrder() {
   closeModalBtn();
   renderGrid(getFiltered());
 }
-
-function doTopup() {
-  if (!currentProduct) return;
-  const id = currentProduct.id;
-  const existing = cart[id] || 0;
-  cart[id] = existing + currentQty;
-  updateCartCount();
-  const zh = lang === 'zh';
-  showToast(zh ? `已追加，共 ×${cart[id]} ✓` : `Total ×${cart[id]} in order ✓`);
-  document.getElementById('order-topup-banner').style.display = 'none';
-  closeModalBtn();
-  renderGrid(getFiltered());
-}
-
-function doReplace() {
-  if (!currentProduct) return;
-  const id = currentProduct.id;
-  cart[id] = currentQty;
-  updateCartCount();
-  const zh = lang === 'zh';
-  showToast(zh ? `已更新为 ×${currentQty} ✓` : `Updated to ×${currentQty} ✓`);
-  document.getElementById('order-topup-banner').style.display = 'none';
-  closeModalBtn();
-  renderGrid(getFiltered());
-}
-
 
 function showToast(msg) {
   const t = document.getElementById('toast');
@@ -1141,23 +1092,11 @@ function calcDosage() {
   result.innerHTML = html_out;
 }
 
-function calcSetUnit(unit) {
-  calcUnit = unit;
-  document.getElementById('unit-acre')?.classList.toggle('active', unit==='acre');
-  document.getElementById('unit-hect')?.classList.toggle('active', unit==='hect');
-  calcDosage();
-}
-
 function calcPickTank(btn, litres) {
   document.querySelectorAll('#tank-badge-row .calc-badge').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   const inp = document.getElementById('calc-tank');
   if (inp) { inp.value = litres; calcDosage(); }
-}
-
-function calcSelectBadge(btn, group) {
-  btn.closest('.calc-badge-row').querySelectorAll('.calc-badge').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
 }
 
 function calcClearBadges(group) {
@@ -1458,7 +1397,6 @@ function rebuildOrderText() {
   }
 }
 
-function closeExportOverlay(e) { if(e.target===document.getElementById('export-overlay')) closeExport(); }
 function closeExport() { document.getElementById('export-overlay').classList.remove('open'); }
 
 function copyOrder() {
@@ -1747,8 +1685,6 @@ function shareProduct() {
   } else { draw(0, 0); share(); }
 }
 
-function sendWhatsApp() { onWaClick(); }
-
 // ── SHARE PRODUCT ────────────────────────────────
 
 function openLightbox(src, caption) {
@@ -1873,17 +1809,6 @@ function renderHistoryBody() {
 
 function closeHistoryModal() {
   const hm = document.getElementById('history-modal'); hm.classList.remove('open'); hm.style.display = 'none';
-}
-
-function copyHistoryOrder(idx) {
-  const history = loadOrderHistory();
-  if (!history[idx]) return;
-  try { navigator.clipboard.writeText(history[idx].text); } catch(e) {
-    const ta = document.createElement('textarea');
-    ta.value = history[idx].text; document.body.appendChild(ta); ta.select();
-    document.execCommand('copy'); document.body.removeChild(ta);
-  }
-  showToast(lang === 'zh' ? '已复制 ✓' : 'Copied ✓');
 }
 
 function deleteHistoryOrder(idx) {
