@@ -1,7 +1,7 @@
 // LV Long Expo PWA — service worker
 // App is a single self-contained HTML file (all data/images inlined),
 // so caching index.html + manifest + icons is enough for offline use.
-const CACHE_VERSION = 'lvlongexpo-v1.0.1';
+const CACHE_VERSION = 'lvlongexpo-v1.0.2';
 const CORE = [
   './',
   './index.html',

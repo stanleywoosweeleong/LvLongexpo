@@ -9,7 +9,7 @@ Single-file bilingual (中文 / English) product guide and WhatsApp order pad fo
 ## What's in this repo
 | File | Purpose |
 |------|---------|
-| `index.html` | The entire app (48 products, search, dosage calculator, cart, customer capture, WhatsApp export). All product data and images are inlined. |
+| `index.html` | The entire app (57 products, search, dosage calculator, cart, customer capture, WhatsApp export). All product data and images are inlined. |
 | `manifest.json` | PWA manifest (installable "Add to Home Screen"). |
 | `sw.js` | Service worker — offline support + update-on-load. |
 | `icon-192.png`, `icon-512.png` | App icons (home screen / install). |
@@ -28,6 +28,9 @@ without editing.
   A **"Reset my info" / 清除我的资料** link clears it.
 - On a **shared kiosk**, tap Reset between visitors. For self-service, prefer a
   **QR code** pointing at the live URL so each visitor uses their own phone.
+- The layout is **responsive**: phones get the compact mobile view; on a
+  desktop/tablet booth screen the header is larger and the category filters
+  display as larger tiles for easier tapping.
 
 ## How to publish on GitHub Pages
 1. Create a new repo named **`LvLongexpo`** under `stanleywoosweeleong`.
